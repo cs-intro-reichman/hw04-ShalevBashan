@@ -22,10 +22,11 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-       int[] a = allIndexOf(args[0], 'l');
-       for (int i = 0; i < a.length; i++) {
-        System.out.print (a[i] + ", ");
-       }
+    //    int[] a = allIndexOf(args[0], 'l');
+    //    for (int i = 0; i < a.length; i++) {
+    //     System.out.print (a[i] + ", ");
+    // }
+    System.out.println (camelCase(args[0]));
     }
 
     public static String capVowelsLowRest (String string) {
@@ -54,7 +55,8 @@ public class StringOps {
         String s = "";
         boolean first = true;
         for (int i = 0; i < string.length(); i++) {
-            if (string.charAt(i) == ' ') {
+            if (s == "") first = true;
+            if (string.charAt(i) == ' ' && i != 0) {
                 first = false;
             }
             if (first == true) {
@@ -64,14 +66,19 @@ public class StringOps {
                     s += string.charAt(i);
                 }
             } else {
-                if (string.charAt(i - 1) == 32) {
-                    s += (char)(string.charAt(i) - 32);
+                if (string.charAt(i - 1) == ' ') {
+                    if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
+                        s += string.charAt(i);
+                    } else if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
+                        s += (char)(string.charAt(i) - 32);
+                    }
                 } else if (string.charAt(i) >= 65 && string.charAt(i) <= 90) {
                     s += (char)(string.charAt(i) + 32);
                 } else if (string.charAt(i) >= 97 && string.charAt(i) <= 122) {
                     s += string.charAt(i);
                 }
             }
+            System.out.println (first + "  " + string.charAt(i));
         }
         return s;
     }
@@ -91,7 +98,6 @@ public class StringOps {
                 iCount++;
             }
         }
-        System.out.println (indexOf);
         return indexOf;
     }
 }
