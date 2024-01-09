@@ -23,10 +23,10 @@ public class ArrayOps {
                 if (array[i] + 1 == array[j]) {
                     break;
                 }
-                // if (j == array.length - 1) {
-                //     missing = array[i] + 1;
-                //     foundM = true;
-                // }
+                if (j == array.length - 1) {
+                    missing = array[i] + 1;
+                    foundM = true;
+                }
             }
             if (foundM) break;
         }
