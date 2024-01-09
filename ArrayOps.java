@@ -1,6 +1,6 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        int[] a = new int[10];
+        int[] a = new int[args.length];
         int[] b = new int[10];
         for (int i = 0; i < a.length; i++) {
             a[i] = Integer.parseInt(args[i]);
@@ -16,18 +16,22 @@ public class ArrayOps {
     }
     
     public static int findMissingInt (int [] array) {
+        if (array.length == 1) return (array[0] + 1);
         int missing = 0;
+        int max = 0;
         boolean foundM =  false;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
                 if (array[i] + 1 == array[j]) {
                     break;
                 }
+                max = Math.max(array[j], max);
                 if (j == array.length - 1 && i != array.length - 1) {
                     missing = array[i] + 1;
                     foundM = true;
                 }
             }
+            if (max < missing) return 0;
             if (foundM) break;
         }
         return missing;
