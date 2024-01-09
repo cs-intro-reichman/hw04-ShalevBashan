@@ -78,7 +78,6 @@ public class StringOps {
                     s += string.charAt(i);
                 }
             }
-            System.out.println (first + "  " + string.charAt(i));
         }
         return s;
     }

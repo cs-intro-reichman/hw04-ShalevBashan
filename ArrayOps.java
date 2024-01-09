@@ -9,8 +9,8 @@ public class ArrayOps {
         //     b[i] = Integer.parseInt(args[i+a.length]);
         // }
         
-        // System.out.println (findMissingInt(a));
-        System.out.println (secondMaxValue(a));
+        System.out.println (findMissingInt(a));
+        // System.out.println (secondMaxValue(a));
         // System.out.println (containsTheSameElements(a, b));
         // System.out.println (isSorted(a));
     }
@@ -23,7 +23,7 @@ public class ArrayOps {
                 if (array[i] + 1 == array[j]) {
                     break;
                 }
-                if (j == array.length - 1) {
+                if (j == array.length - 1 && i != array.length - 1) {
                     missing = array[i] + 1;
                     foundM = true;
                 }
@@ -38,15 +38,15 @@ public class ArrayOps {
         int max2 = Math.min (array[0], array [1]);
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
-
                 max = Math.max(max, Math.max(array[i], array[j]));
                 if (array[j] < max) {
                     max2 = Math.max(max2, array[j]);
                 }
+               if (array[i] == array[j] && array[j] == max && i > 0 && i != j) return max;
             }
-            // if (max2 == max) {
-            //     max2 = Math.min(max2, array[i]);
-            // }
+            if (max2 == max) {
+                max2 = Math.min(max2, array[i]);
+            }
         }
         return max2;
     }
